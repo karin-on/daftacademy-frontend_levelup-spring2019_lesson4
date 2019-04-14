@@ -13,13 +13,18 @@ console.log(Promise.all(myPromises));
 
 
 const promiseAll = function(promises) {
-    return promises.map(async prom => {
-        try {
-            return await prom;
-        } catch (e) {
-            return e;
-        }
-    });
+    return new Promise((resolve, reject) => {
+        const arr = [];
+
+        promises.forEach(async prom => {
+            try {
+                arr.push(await prom);
+                resolve(arr);
+            } catch (e) {
+                reject(e);
+            }
+        });
+    })
 };
 
 // promiseAll(myPromises);
