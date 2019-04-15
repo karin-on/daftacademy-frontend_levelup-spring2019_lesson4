@@ -7,26 +7,36 @@ const promiseB = new Promise((res, rej) => {
 const promiseC = 42;
 const myPromises = [promiseA,  promiseB, promiseC];
 
-console.log(Promise.all(myPromises));
+// console.log(Promise.all(myPromises));
 // Promise.all(myPromises).then((values) => console.log(values));
+Promise.all([]).then(values => console.log(values));
+Promise.all([1, 2, 3]).then(values => console.log(values));
 
 
 
 const promiseAll = function(promises) {
+    console.log(promises.length);
     return new Promise((resolve, reject) => {
         const arr = [];
 
-        promises.forEach(async prom => {
+        if (promises.length === 0) {
+            resolve([]);
+        }
+
+        promises.forEach(async (prom, i) => {
             try {
-                arr.push(await prom);
+                arr[i] = await prom;
+                // console.log(i);
                 resolve(arr);
             } catch (e) {
                 reject(e);
             }
         });
-    })
+    });
 };
 
 // promiseAll(myPromises);
-console.log(promiseAll(myPromises));
+// console.log(promiseAll(myPromises));
 // promiseAll(myPromises).then(values => console.log(values));
+// promiseAll([]).then(values => console.log(values));
+// promiseAll([1, 2, 3]).then(values => console.log(values));
