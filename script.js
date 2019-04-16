@@ -19,7 +19,7 @@ const promiseAll = function(promises) {
     return new Promise((resolve, reject) => {
         const arr = [];
 
-        if (promises.length === 0) {
+        if (!promises.length) {
             resolve([]);
         }
 
@@ -38,5 +38,5 @@ const promiseAll = function(promises) {
 // promiseAll(myPromises);
 // console.log(promiseAll(myPromises));
 // promiseAll(myPromises).then(values => console.log(values));
-// promiseAll([]).then(values => console.log(values));
+promiseAll([]).then(values => console.log(values));
 // promiseAll([1, 2, 3]).then(values => console.log(values));
