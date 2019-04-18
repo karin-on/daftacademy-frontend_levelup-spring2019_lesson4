@@ -7,7 +7,5 @@
 - Użyj testów poniżej, w celu sprawdzenia swojej implementacji
 - Rozwiązanie oczywiście wrzuć na GH
 
-```
-Deadline do wtorku 16.04 do 23:59.
-```
+
 
